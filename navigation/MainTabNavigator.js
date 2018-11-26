@@ -24,6 +24,7 @@ HomeStack.navigationOptions = {
           ? `ios-information-circle${focused ? "" : "-outline"}`
           : "md-information-circle"
       }
+      style={{height: 0}}
     />
   )
 };
@@ -57,7 +58,5 @@ SettingsStack.navigationOptions = {
 };
 
 export default createBottomTabNavigator({
-  HomeStack,
-  LinksStack,
-  SettingsStack
+  HomeStack
 });
