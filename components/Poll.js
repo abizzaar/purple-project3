@@ -14,9 +14,20 @@ export class Poll extends React.Component {
     return (
       <View>
         <Card title={this.props.question}>
-          <Text style={{marginBottom: 10}}>
-            Here is where we can have the anwers
-          </Text>
+
+          <Button
+            title="sample answer"
+            titleStyle={{ fontWeight: "700" }}
+            buttonStyle={{
+              backgroundColor: "rgba(92, 99,216, 1)",
+              width: 'auto',
+              height: 45,
+              borderColor: "transparent",
+              borderWidth: 0,
+              borderRadius: 5
+            }}
+            containerStyle={{ marginTop: 20 }}
+          />
         </Card>
       </View>
     );

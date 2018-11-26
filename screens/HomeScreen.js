@@ -31,13 +31,16 @@ export default class HomeScreen extends React.Component {
         >
         </Header>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          
           <View>
-            <Poll question="vim or emacs?">
+            <Poll question="Vim or emacs?">
             </Poll>
           </View>
           <View>
-            <Poll question="who will win the next presidential election?">
+            <Poll question="Who will win the next presidential election?">
+            </Poll>
+          </View>
+          <View>
+            <Poll question="What's your favorite makeup brand for mascara?">
             </Poll>
           </View>
         </ScrollView>
