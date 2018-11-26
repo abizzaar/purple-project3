@@ -31,7 +31,7 @@ export class Poll extends React.Component {
           return(
             <PollButton 
               pollClicked={this.state.pollClicked} 
-              keyNum={i} 
+              key={i} 
               item={item}
               press={() => {
                 this.setState(
