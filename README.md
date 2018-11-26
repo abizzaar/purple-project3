@@ -6,9 +6,11 @@ Pollen is a place where people share their voices and opinions with polls. Colle
 
 Create a poll and gather opinions! 
 
+```
 "Who does everyone think will win the national election?"<br />
 "What's your favorite makeup brand for mascara?"<br />
 "Vim or Emacs?"<br />
+```
 
 Options include publishing a poll, responding to a poll, viewing poll statistics, categorizing a poll by topic, searching polls by topic categories, and more.
 
