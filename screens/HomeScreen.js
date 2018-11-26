@@ -72,6 +72,13 @@ const pref = {
   ]
 }
 
+const pollArray = [];
+
+const addQuestionToPollArray = (pollArray) => {
+  pollArray.push(pres, vimEmacs, makeup);
+  console.log(pollArray);
+}
+
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
