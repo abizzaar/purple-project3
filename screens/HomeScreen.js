@@ -16,30 +16,60 @@ import { Poll } from '../components/Poll';
 
 const pres = {
   question: 'Who will win the next presidential election?',
-  answers: {
-    'Gabe': 1,
-    'Omkar': 4,
-    'May': 3,
-    'Mo': 9,
-    'Abizar': 3
-  }
+  answers: [
+    {
+      title: 'Gabe',
+      number: 1
+    },
+    {
+      title: 'Omkar',
+      number: 4
+    },
+    {
+      title: 'May',
+      number: 3
+    },
+    {
+      title: 'Mo',
+      number: 9
+    },
+    {
+      title: 'Abizar',
+      number: 3
+    }
+  ]
 }
 
 const makeup = {
   question: "What's your favorite makeup brand for mascara?",
-  answers: {
-    'Bare Minerals': 3,
-    'L\'Oreal': 1,
-    'MAC': 5
-  }
+  answers: [
+    {
+      title: 'Bare Minerals',
+      number: 3
+    },
+    {
+      title: 'L\'Oreal',
+      number: 1
+    },
+    {
+      title: 'MAC',
+      number: 5
+    }
+  ]
 }
 
 const pref = {
   question: "Vim or emacs?",
-  answers: {
-    'Vim': 31,
-    'EMac': 2
-  }
+  answers: [
+    {
+      title: 'Vim',
+      number: 31
+    },
+    {
+      title: 'EMacs',
+      number: 2
+    }
+  ]
 }
 
 export default class HomeScreen extends React.Component {

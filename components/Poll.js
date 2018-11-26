@@ -19,19 +19,24 @@ export class Poll extends React.Component {
             borderRadius: 5
           }}
         >
-          <Button
-            title="sample answer"
-            titleStyle={{ fontWeight: "700" }}
-            buttonStyle={{
-              backgroundColor: "rgba(92, 99,216, 1)",
-              width: 'auto',
-              height: 45,
-              borderColor: "transparent",
-              borderWidth: 0,
-              borderRadius: 5
-            }}
-            containerStyle={{ marginTop: 7, marginBottom: 7 }}
-          />
+        {this.props.answers.map((item, i)=> {
+          return(
+            <Button
+              key={i}
+              title={item.title}
+              titleStyle={{ fontWeight: "700" }}
+              buttonStyle={{
+                backgroundColor: "rgba(92, 99,216, 1)",
+                width: 'auto',
+                height: 45,
+                borderColor: "transparent",
+                borderWidth: 0,
+                borderRadius: 5
+              }}
+              containerStyle={{ marginTop: 7, marginBottom: 7 }}
+            />
+          );
+        })}
         </Card>
       </View>
     );
