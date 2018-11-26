@@ -18,7 +18,7 @@ Options include publishing a poll, responding to a poll, viewing poll statistics
 
 **See the impact in the numbers!**
 
-To run the app, navigate to your terminal and type: 
+To run the app, navigate to your terminal and type:
 ```
 $ cd purple-project3/
 $ yarn
