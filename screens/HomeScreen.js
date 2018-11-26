@@ -25,27 +25,22 @@ const pres = {
   }
 }
 
-// const vimEmacs = {
-//   question: 'Who will win the next presidential election?',
-//   answers: {
-//     'gabe': 1,
-//     'omkar': 4,
-//     may: 3,
-//     mo: 9,
-//     abizar: 3
-//   }
-// }
+const makeup = {
+  question: "What's your favorite makeup brand for mascara?",
+  answers: {
+    'Bare Minerals': 3,
+    'L\'Oreal': 1,
+    'MAC': 5
+  }
+}
 
-// const makeup = {
-//   question: "What's your favorite makeup brand for mascara?",
-//   answers: {
-//     bare: 1,
-//     omkar: 4,
-//     may: 3,
-//     mo: 9,
-//     abizar: 3
-//   }
-// }
+const pref = {
+  question: "Vim or emacs?",
+  answers: {
+    'Vim': 31,
+    'EMac': 2
+  }
+}
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -65,7 +60,7 @@ export default class HomeScreen extends React.Component {
         </Header>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           <View>
-            <Poll question="Vim or emacs?">
+            <Poll question={pref.question} answers={pref.answers}>
             </Poll>
           </View>
           <View>
@@ -73,7 +68,7 @@ export default class HomeScreen extends React.Component {
             </Poll>
           </View>
           <View>
-            <Poll question="What's your favorite makeup brand for mascara?">
+            <Poll question={makeup.question} answers={makeup.answers}>
             </Poll>
           </View>
         </ScrollView>
