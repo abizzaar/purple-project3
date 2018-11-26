@@ -1,14 +1,30 @@
-import React from 'react';
-import { ExpoConfigView } from '@expo/samples';
+import React from "react";
+import { ScrollView, StyleSheet, Text } from "react-native";
 
 export default class SettingsScreen extends React.Component {
   static navigationOptions = {
-    title: 'app.json',
+    title: "Settings"
   };
 
   render() {
-    /* Go ahead and delete ExpoConfigView and replace it with your
-     * content, we just wanted to give you a quick view of your config */
-    return <ExpoConfigView />;
+    return (
+      <ScrollView style={styles.container}>
+        <Text style={styles.getStartedText}>!</Text>
+      </ScrollView>
+    );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: 15,
+    backgroundColor: "#fff"
+  },
+  getStartedText: {
+    fontSize: 17,
+    color: "rgba(96,100,109, 1)",
+    lineHeight: 24,
+    textAlign: "center"
+  }
+});
