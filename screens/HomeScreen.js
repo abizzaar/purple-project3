@@ -14,45 +14,45 @@ import { Header } from 'react-native-elements';
 import { MonoText } from '../components/StyledText';
 import { Poll } from '../components/Poll';
 
-// const pres = {
-//   question: 'Who will win the next presidential election?',
-//   answers: {
-//     'Gabe': 1,
-//     'Omkar': 4,
-//     'May': 3,
-//     'Mo': 9,
-//     'Abizar': 3
-//   }
-// }
-//
-// const vimEmacs = {
-//   question: 'Who will win the next presidential election?',
-//   answers: {
-//     'gabe': 1,
-//     'omkar': 4,
-//     may: 3,
-//     mo: 9,
-//     abizar: 3
-//   }
-// }
-//
-// const makeup = {
-//   "question" : "What's your favorite makeup brand for mascara?",
-//   "answers": {
-//     "bare": 1,
-//     "omkar": 4,
-//     may: 3,
-//     mo: 9,
-//     abizar: 3
-//   }
-// }
-//
-// const pollArray = [];
-//
-// const addQuestionToPollArray = (pollArray) => {
-//   pollArray.push(pres, vimEmacs, makeup);
-//   console.log(pollArray);
-// }
+const pres = {
+  "question": 'Who will win the next presidential election?',
+  "answers": {
+    'Gabe': 1,
+    'Omkar': 4,
+    'May': 3,
+    'Mo': 9,
+    'Abizar': 3
+  }
+}
+
+const vimEmacs = {
+  "question": 'Who will win the next presidential election?',
+  "answers": {
+    'gabe': 1,
+    'omkar': 4,
+    "may": 3,
+    "mo": 9,
+    "abizar": 3
+  }
+}
+
+const makeup = {
+  "question" : "What's your favorite makeup brand for mascara?",
+  "answers": {
+    "gabe": 1,
+    "omkar": 4,
+    "may": 3,
+    "mo": 9,
+    "abizar": 3
+  }
+}
+
+const pollArray = [];
+
+const addQuestionToPollArray = (pollArray) => {
+  pollArray.push(pres, vimEmacs, makeup);
+  console.log(pollArray);
+}
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
