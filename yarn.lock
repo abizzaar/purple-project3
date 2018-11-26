@@ -4212,6 +4212,7 @@ lodash.mapvalues@^4.6.0:
 lodash.merge@^4.6.1:
   version "4.6.1"
   resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.1.tgz#adc25d9cb99b9391c59624f379fbba60d7111d54"
+  integrity sha512-AOYza4+Hf5z1/0Hztxpm2/xiPZgi/cjMqdnKTUWTBSKchJlxXXuUSxCCl8rJlf4g6yww/j6mA8nC8Hw/EZWxKQ==
 
 lodash.omit@^4.5.0:
   version "4.5.0"
@@ -4251,6 +4252,7 @@ lodash.throttle@^4.1.1:
 lodash.times@^4.3.2:
   version "4.3.2"
   resolved "https://registry.yarnpkg.com/lodash.times/-/lodash.times-4.3.2.tgz#3e1f2565c431754d54ab57f2ed1741939285ca1d"
+  integrity sha1-Ph8lZcQxdU1Uq1fy7RdBk5KFyh0=
 
 lodash.zipobject@^4.1.3:
   version "4.1.3"
@@ -4992,6 +4994,7 @@ onetime@^2.0.0:
 opencollective-postinstall@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/opencollective-postinstall/-/opencollective-postinstall-2.0.1.tgz#798e83e168f7b91949061c2683f762af747f17cc"
+  integrity sha512-saQQ9hjLwu/oS0492eyYotoh+bra1819cfAT5rjY/e4REWwuc8IgZ844Oo44SiftWcJuBiqp0SA0BFVbmLX0IQ==
 
 opn@^3.0.2:
   version "3.0.3"
@@ -5449,6 +5452,7 @@ react-native-drawer-layout@1.3.2:
 react-native-elements@^1.0.0-beta7:
   version "1.0.0-beta7"
   resolved "https://registry.yarnpkg.com/react-native-elements/-/react-native-elements-1.0.0-beta7.tgz#d732affc905079033a8b53343587f7c1dbc59834"
+  integrity sha512-w89YVfF7own1V3RgHDj6EAofk3mYdL9Z28OolxphFce2mv2k/peFEII7x0S6LyQ7rcT3QaxWDlyP7AS4d8duGg==
   dependencies:
     lodash.merge "^4.6.1"
     lodash.times "^4.3.2"

@@ -1,13 +1,15 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import { Card, ListItem, Button, Icon } from 'react-native-elements';
-
-import Colors from '../constants/Colors';
+import {PollButton} from './PollButton.js'
 
 export class Poll extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      pollClicked: false
+    }
   }
 
   render() {
@@ -16,24 +18,26 @@ export class Poll extends React.Component {
         <Card 
           title={this.props.question}
           containerStyle={{
-            borderRadius: 5
+            borderRadius: 5,
           }}
+          titleStyle={
+            {
+              textAlign: 'left',
+              paddingLeft: 10
+            }
+          }
         >
         {this.props.answers.map((item, i)=> {
           return(
-            <Button
-              key={i}
-              title={item.title}
-              titleStyle={{ fontWeight: "700" }}
-              buttonStyle={{
-                backgroundColor: "rgba(92, 99,216, 1)",
-                width: 'auto',
-                height: 45,
-                borderColor: "transparent",
-                borderWidth: 0,
-                borderRadius: 5
+            <PollButton 
+              pollClicked={this.state.pollClicked} 
+              keyNum={i} 
+              item={item}
+              press={() => {
+                this.setState(
+                  {pollClicked: true}
+                )
               }}
-              containerStyle={{ marginTop: 7, marginBottom: 7 }}
             />
           );
         })}

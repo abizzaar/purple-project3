@@ -63,7 +63,7 @@ const pref = {
   answers: [
     {
       title: 'Vim',
-      number: 31
+      number: 10
     },
     {
       title: 'EMacs',
@@ -83,9 +83,8 @@ export default class HomeScreen extends React.Component {
         <Header
           containerStyle={{
             backgroundColor: '#ffffff',
-            justifyContent: 'space-around',
           }}
-          centerComponent={{ text: 'Pollen!', style: { color: '#000', fontSize: 30 } }}
+          centerComponent={{ text: 'POLLEN', style: { color: '#000', fontSize: 20 } }}
         >
         </Header>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
