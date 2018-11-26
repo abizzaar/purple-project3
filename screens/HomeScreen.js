@@ -72,7 +72,7 @@ export default class HomeScreen extends React.Component {
         </Header>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           <View>
-            <Poll question="Vim or emacs?">
+            <Poll question={pref.question} answers={pref.answers}>
             </Poll>
           </View>
           <View>
@@ -80,7 +80,7 @@ export default class HomeScreen extends React.Component {
             </Poll>
           </View>
           <View>
-            <Poll question="What's your favorite makeup brand for mascara?">
+            <Poll question={makeup.question} answers={makeup.answers}>
             </Poll>
           </View>
         </ScrollView>
