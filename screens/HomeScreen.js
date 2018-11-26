@@ -11,6 +11,7 @@ import {
 import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
+import { Poll } from '../components/Poll';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -30,6 +31,11 @@ export default class HomeScreen extends React.Component {
               }
               style={styles.welcomeImage}
             />
+          </View>
+
+          <View>
+            <Poll>
+            </Poll>
           </View>
 
           <View style={styles.getStartedContainer}>

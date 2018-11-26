@@ -4,7 +4,7 @@ import { Card, ListItem, Button, Icon } from 'react-native-elements';
 
 import Colors from '../constants/Colors';
 
-export default class Poll extends React.Component {
+export class Poll extends React.Component {
   render() {
     return (
       <View>
