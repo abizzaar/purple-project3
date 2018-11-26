@@ -13,8 +13,12 @@ export class Poll extends React.Component {
   render() {
     return (
       <View>
-        <Card title={this.props.question}>
-
+        <Card 
+          title={this.props.question}
+          containerStyle={{
+            borderRadius: 5
+          }}
+        >
           <Button
             title="sample answer"
             titleStyle={{ fontWeight: "700" }}
@@ -26,7 +30,7 @@ export class Poll extends React.Component {
               borderWidth: 0,
               borderRadius: 5
             }}
-            containerStyle={{ marginTop: 20 }}
+            containerStyle={{ marginTop: 7, marginBottom: 7 }}
           />
         </Card>
       </View>
