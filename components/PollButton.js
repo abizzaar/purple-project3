@@ -12,7 +12,6 @@ export class PollButton extends React.Component {
     return (
       <View>
         <Button
-        key={this.props.key}
         title={this.props.item.title}
         titleStyle={{ fontWeight: "500", zIndex: 200, color: "black" }}
         buttonStyle={{
