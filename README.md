@@ -31,6 +31,7 @@ To run server:
 $ cd purple-project3/server
 $ yarn
 $ yarn run dev
+
 Navigate to http://localhost:4000 to interact with the server using the GraphQL playground
 ```
 
