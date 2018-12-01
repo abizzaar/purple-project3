@@ -1,0 +1,27 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "our server",
+  "main": "index.js",
+  "author": "alayna lol",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon ./index.js --exec babel-node",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "graphql": "^14.0.2",
+    "graphql-yoga": "^1.16.7",
+    "mongod": "^2.0.0",
+    "mongodb": "^3.1.10",
+    "mongoose": "^5.3.14",
+    "nodemon": "^1.18.7"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-syntax-async-functions": "^6.13.0",
+    "babel-plugin-transform-regenerator": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "nodemon": "^1.17.4"
+  }
+}

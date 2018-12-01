@@ -1,6 +1,7 @@
-node_modules/**/*
+client/node_modules/**/*
 .expo/*
-npm-debug.*
+client/.expo/*
+client/npm-debug.*
 *.jks
 *.p12
 *.key
