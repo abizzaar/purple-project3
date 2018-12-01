@@ -24,7 +24,6 @@ $ git clone https://github.com/497-fall2018/purple-project3.git
 $ cd purple-project3/client
 $ yarn
 $ expo start
-
 ```
 
 To run server:
@@ -32,5 +31,6 @@ To run server:
 $ cd purple-project3/server
 $ yarn
 $ yarn run dev
-
+Navigate to http://localhost:4000 to interact with the server using the GraphQL playground
 ```
+
