@@ -1,76 +1,15 @@
 import React from 'react';
 import {
-  Image,
   Platform,
   ScrollView,
   StyleSheet,
-  TouchableOpacity,
   View,
   Text
 } from 'react-native';
 import { WebBrowser } from 'expo';
 import { Header } from 'react-native-elements';
-
 import { MonoText } from '../components/StyledText';
-import { Poll } from '../components/Poll';
-
-const pres = {
-  question: 'Who will win the next presidential election?',
-  answers: [
-    {
-      title: 'Gabe',
-      number: 1
-    },
-    {
-      title: 'Omkar',
-      number: 4
-    },
-    {
-      title: 'May',
-      number: 3
-    },
-    {
-      title: 'Mo',
-      number: 9
-    },
-    {
-      title: 'Abizar',
-      number: 3
-    }
-  ]
-}
-
-const makeup = {
-  question: "What's your favorite makeup brand for mascara?",
-  answers: [
-    {
-      title: 'Bare Minerals',
-      number: 3
-    },
-    {
-      title: 'L\'Oreal',
-      number: 1
-    },
-    {
-      title: 'MAC',
-      number: 5
-    }
-  ]
-}
-
-const pref = {
-  question: "Vim or emacs?",
-  answers: [
-    {
-      title: 'Vim',
-      number: 10
-    },
-    {
-      title: 'EMacs',
-      number: 2
-    }
-  ]
-}
+import PollList from '../components/PollList.js';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -88,18 +27,9 @@ export default class HomeScreen extends React.Component {
         >
         </Header>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <View>
-            <Poll question={pref.question} answers={pref.answers}>
-            </Poll>
-          </View>
-          <View>
-            <Poll question={pres.question} answers={pres.answers}>
-            </Poll>
-          </View>
-          <View>
-            <Poll question={makeup.question} answers={makeup.answers}>
-            </Poll>
-          </View>
+        <View>
+          <PollList></PollList>
+        </View>
         </ScrollView>
       </View>
     );

@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import { Card, ListItem, Button, Icon } from 'react-native-elements';
-import {PollButton} from './PollButton.js'
+import Option from './Option.js'
 
-export class Poll extends React.Component {
+export default class Poll extends React.Component {
 
   constructor(props) {
     super(props);
@@ -16,7 +16,7 @@ export class Poll extends React.Component {
     return (
       <View>
         <Card 
-          title={this.props.question}
+          title={this.props.poll.question}
           containerStyle={{
             borderRadius: 5,
           }}
@@ -27,12 +27,12 @@ export class Poll extends React.Component {
             }
           }
         >
-        {this.props.answers.map((item, i)=> {
-          return(
-            <PollButton 
+        {this.props.poll.options.map((option)=> {
+          return (
+            <Option 
               pollClicked={this.state.pollClicked} 
-              key={i} 
-              item={item}
+              key={option.id} 
+              option={option}
               press={() => {
                 this.setState(
                   {pollClicked: true}

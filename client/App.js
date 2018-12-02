@@ -3,27 +3,33 @@ import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
 import HomeScreen from "./screens/HomeScreen";
+import { ApolloProvider } from "react-apollo";
+import client from "./index"
 
 export default class App extends React.Component {
   state = {
     isLoadingComplete: false,
   };
 
-  render() {
+  render(){
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
       return (
-        <AppLoading
-          startAsync={this._loadResourcesAsync}
-          onError={this._handleLoadingError}
-          onFinish={this._handleFinishLoading}
-        />
+        <ApolloProvider client={client}>
+          <AppLoading
+            startAsync={this._loadResourcesAsync}
+            onError={this._handleLoadingError}
+            onFinish={this._handleFinishLoading}
+          />
+        </ApolloProvider>
       );
     } else {
       return (
-        <View style={styles.container}>
-          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-          <HomeScreen />
-        </View>
+        <ApolloProvider client={client}>
+          <View style={styles.container}>
+            {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+            <HomeScreen />
+          </View>
+        </ApolloProvider>
       );
     }
   }

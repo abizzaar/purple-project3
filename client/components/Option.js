@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 import { Card, ListItem, Button, Icon } from 'react-native-elements';
 
 
-export class PollButton extends React.Component {
+export default class Option extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -12,7 +12,7 @@ export class PollButton extends React.Component {
     return (
       <View>
         <Button
-        title={this.props.item.title}
+        title={this.props.option.name}
         titleStyle={{ fontWeight: "500", zIndex: 200, color: "black" }}
         buttonStyle={{
           backgroundColor: "rgba(0,0,0,0.05)",
@@ -27,7 +27,7 @@ export class PollButton extends React.Component {
         }}
         icon={<Text style={{fontSize: 18, fontWeight: "400"}}>
                 {
-                  this.props.pollClicked ? this.props.item.number : ""
+                  this.props.pollClicked ? this.props.option.votes : ""
                 }
               </Text>}
         iconRight
@@ -38,7 +38,7 @@ export class PollButton extends React.Component {
       </Button>
       <Text style={{
         backgroundColor: '#a8e7ff',
-        width: this.props.pollClicked ? this.props.item.number * 20 : 0 ,
+        width: this.props.pollClicked ? this.props.option.votes * 20 : 0 ,
         zIndex: -1,
         borderRadius: 5,
         position: 'absolute',

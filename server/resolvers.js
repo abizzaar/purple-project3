@@ -5,11 +5,22 @@ const resolvers = {
   Poll: {
     options: (parent) => parent.optionIds.map((id) => Option.findById(id))  
   },
-  // Option: {
-  // },
+
   Query: {
-    polls: () => Poll.find()
+    polls: () => Poll.find(),
+    poll: async(_, { pollId }) =>  {
+      let poll = await Poll.findById(pollId);
+      console.log(poll);
+      return poll;
+    },
+
+    option: async (_, { optionId }) => {
+      let option = await Option.findById(optionId);
+      console.log(option);
+      return option;
+    }
   },
+  
   Mutation: {
     addPoll: async (_, {question}) => {
       const poll = new Poll({
@@ -27,13 +38,13 @@ const resolvers = {
       await Poll.findByIdAndUpdate(pollId, {
         $push: { optionIds: option._id }
       });
+      console.log(option);
       return option;
     },
-    vote: async (optionId) => {
-      option.findByIdAndUpdate(optionId, {
+    vote: (_, { optionId }) => 
+      Option.findByIdAndUpdate(optionId, {
         $inc: {votes: 1}
-      })
-    }
+      }, { new: true})
   }
 };
 
