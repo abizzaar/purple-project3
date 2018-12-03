@@ -21,8 +21,8 @@ HomeStack.navigationOptions = {
       focused={focused}
       name={
         Platform.OS === "ios"
-          ? `ios-information-circle${focused ? "" : "-outline"}`
-          : "md-information-circle"
+          ? `ios-home${focused ? "" : "-outline"}`
+          : "md-home"
       }
       style={{ height: 0 }}
     />
@@ -34,11 +34,11 @@ const LinksStack = createStackNavigator({
 });
 
 LinksStack.navigationOptions = {
-  tabBarLabel: "Categories",
+  tabBarLabel: "Add",
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === "ios" ? "ios-albums" : "md-albums"}
+      name={Platform.OS === "ios" ? "ios-add-circle" : "md-add-circle"}
     />
   )
 };
