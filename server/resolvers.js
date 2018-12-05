@@ -3,7 +3,7 @@ const Option = require('./models/option');
 
 const resolvers = {
   Poll: {
-    options: (parent) => parent.optionIds.map((id) => Option.findById(id))  
+    options: (parent) => parent.optionIds.map((id) => Option.findById(id))
   },
 
   Query: {
@@ -20,11 +20,12 @@ const resolvers = {
       return option;
     }
   },
-  
+
   Mutation: {
-    addPoll: async (_, {question}) => {
+    addPoll: async (_, {question, description}) => {
       const poll = new Poll({
         question,
+        description,
         optionIds: []
       });
       return await poll.save();
@@ -41,7 +42,7 @@ const resolvers = {
       console.log(option);
       return option;
     },
-    vote: (_, { optionId }) => 
+    vote: (_, { optionId }) =>
       Option.findByIdAndUpdate(optionId, {
         $inc: {votes: 1}
       }, { new: true})

@@ -24,9 +24,9 @@ export default class Option extends React.Component {
     return (
       <Mutation mutation={VOTE}
                 variables={{ optionId: this.props.option.id}}>{
-          // mutation needs function as child 
+          // mutation needs function as child
           // vote is the mutation func that needs to be passed as first input
-          (vote, { data }) => 
+          (vote, { data }) =>
             <View>
               <Button
                 title={this.props.option.name}
@@ -41,15 +41,14 @@ export default class Option extends React.Component {
               >
                 <Text></Text>
               </Button>
-              <Text style={[styles.optionClickEffect, 
+              <Text style={[styles.optionClickEffect,
                             {width: this.props.pollClicked ? this.props.option.votes * 5 : 0}
                           ]}>
               </Text>
             </View>
-     
       }</Mutation>
     )
-    
+
   }
 }
 
@@ -78,5 +77,3 @@ const styles = StyleSheet.create({
     height: 45
   }
 });
-
-
