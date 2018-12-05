@@ -33,9 +33,9 @@ export default class Option extends React.Component {
 
   buttonColor() {
     if (this.props.pollClicked && this.state.optionClicked) {
-      return([styles.specificOptionClickEffect, {width: this.props.option.votes * 5}]);
+      return([styles.specificOptionClickEffect, {width: Math.round(this.props.option.votes * 352/ this.props.totalVotes)}]);
     } else if (this.props.pollClicked) {
-      return([styles.optionClickEffect, {width: this.props.option.votes * 5}]);
+      return([styles.optionClickEffect, {width: Math.round(this.props.option.votes * 352/ this.props.totalVotes)}]);
     } else {
       return([styles.optionClickEffect, {width: 0}]);
     }
@@ -56,7 +56,7 @@ export default class Option extends React.Component {
           // mutation needs function as child
           // vote is the mutation func that needs to be passed as first input
           (vote, { data }) =>
-            <View>
+            <View style={{flex: 1}}>
               <Button
                 title={this.props.option.name}
                 titleStyle={this.buttonTextColor()}

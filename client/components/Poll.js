@@ -10,6 +10,15 @@ export default class Poll extends React.Component {
     this.state = {
       pollClicked: false
     }
+    this.getTotalVotes = this.getTotalVotes.bind(this);
+  }
+
+  getTotalVotes() {
+    var total = 0;
+    for (var i = 0; i < this.props.poll.options.length; i++) {
+      total = total + this.props.poll.options[i].votes;
+    }
+    return total;
   }
 
   render() {
@@ -34,6 +43,7 @@ export default class Poll extends React.Component {
               pollClicked={this.state.pollClicked}
               key={option.id}
               option={option}
+              totalVotes={this.getTotalVotes()}
               press={() => {
                 this.setState(
                   {pollClicked: true}
