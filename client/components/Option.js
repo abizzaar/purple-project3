@@ -17,8 +17,37 @@ mutation VOTE($optionId: ID!) {
 export default class Option extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      optionClicked: false
+    };
+    this.optionPressed = this.optionPressed.bind(this);
+    this.buttonColor = this.buttonColor.bind(this);
   }
 
+  optionPressed() {
+    if (!this.props.pollClicked) {
+      this.props.press();
+      this.setState({optionClicked: true});
+    }
+  }
+
+  buttonColor() {
+    if (this.props.pollClicked && this.state.optionClicked) {
+      return([styles.specificOptionClickEffect, {width: this.props.option.votes * 5}]);
+    } else if (this.props.pollClicked) {
+      return([styles.optionClickEffect, {width: this.props.option.votes * 5}]);
+    } else {
+      return([styles.optionClickEffect, {width: 0}]);
+    }
+  }
+
+  buttonTextColor() {
+    if (this.state.optionClicked) {
+      return(styles.clickedOptionNameStyle);
+    } else {
+      return(styles.optionNameStyle);
+    }
+  }
 
   render() {
     return (
@@ -30,20 +59,18 @@ export default class Option extends React.Component {
             <View>
               <Button
                 title={this.props.option.name}
-                titleStyle={styles.optionNameStyle}
+                titleStyle={this.buttonTextColor()}
                 buttonStyle={styles.optionStyle}
                 icon={<Text style={styles.votesStyle}>
-                        {  this.props.pollClicked ? this.props.option.votes : "" }
+                        { this.props.pollClicked && this.state.optionClicked ? this.props.option.votes : "" }
                       </Text>}
                 iconRight
-                onPress={() => {vote(); this.props.press()}}
+                onPress={() => {vote(); this.optionPressed()}}
                 containerStyle={styles.optionContainer}
               >
                 <Text></Text>
               </Button>
-              <Text style={[styles.optionClickEffect, 
-                            {width: this.props.pollClicked ? this.props.option.votes * 5 : 0}
-                          ]}>
+              <Text style={this.buttonColor()}>
               </Text>
             </View>
      
@@ -66,10 +93,20 @@ const styles = StyleSheet.create({
     paddingRight: 10,
   },
   optionNameStyle: { fontWeight: "500", zIndex: 200, color: "black" },
+  clickedOptionNameStyle: { fontWeight: "500", zIndex: 200, color: "white" },
   votesStyle: { fontSize: 18, fontWeight: "400" },
   optionContainer: { marginTop: 7, marginBottom: 7 },
   optionClickEffect: {
     backgroundColor: '#a8e7ff',
+    zIndex: -1,
+    borderRadius: 5,
+    position: 'absolute',
+    top: 7,
+    left: 0,
+    height: 45
+  },
+  specificOptionClickEffect: {
+    backgroundColor: '#003366',
     zIndex: -1,
     borderRadius: 5,
     position: 'absolute',
