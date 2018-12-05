@@ -19,7 +19,7 @@ const typeDefs =
   }
 
   type Mutation {
-    addPoll(question: String!, description: String): Poll!
+    addPoll(question: String!, description: String!): Poll!
     addOption(name: String!, pollId: ID!): Option!
     vote(optionId: ID!): Option
   }`;
