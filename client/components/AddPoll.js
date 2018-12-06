@@ -7,7 +7,6 @@ import {
 } from 'react-native';
 import { Mutation } from 'react-apollo'
 import { Card, ListItem, Button, Icon } from 'react-native-elements';
-
 import t from "tcomb-form-native";
 import gql from 'graphql-tag'
 
@@ -20,8 +19,6 @@ const CREATE_POLL = gql
   }
 `;
 
-
-
 const CREATE_OPTION = gql
 `
   mutation CREATE_OPTION($name: String!, $pollId: ID!) {
@@ -29,9 +26,7 @@ const CREATE_OPTION = gql
       id
     }
   }
-
 `;
-
 
 const Form = t.form.Form;
 

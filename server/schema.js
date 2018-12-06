@@ -4,6 +4,7 @@ const typeDefs =
     question: String!
     description: String!
     options: [Option!]!
+    createOption(optionNames: [String!]!): [Option]
   }
 
   type Option {

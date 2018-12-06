@@ -3,7 +3,22 @@ const Option = require('./models/option');
 
 const resolvers = {
   Poll: {
-    options: (parent) => parent.optionIds.map((id) => Option.findById(id))
+    options: (parent) => parent.optionIds.map((id) => Option.findById(id)),
+    createOption: async (parent, {optionNames}) => {
+      let returnList = []
+      for (let o in optionNames) {
+        const option = new Option({
+          name: o,
+          votes: 0
+        });
+        await option.save();
+        await Poll.findByIdAndUpdate(parent.id, {
+          $push: { optionIds: option._id }
+        });
+        returnList.push(option)
+      }
+      return returnList
+    }
   },
 
   Query: {
