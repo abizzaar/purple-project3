@@ -34,7 +34,7 @@ export default class PollListSearch extends React.Component {
     return (
       <Query
         query={SEARCH_ALL_POLLS}
-        variables={{ searchQuery: "places"}}
+        variables={{ searchQuery: this.props.searchQuery}}
       >
         {
         ({ loading, error, data }) => {

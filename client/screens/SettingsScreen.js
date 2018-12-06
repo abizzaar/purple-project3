@@ -9,13 +9,29 @@ import t from "tcomb-form-native";
 import { Card, ListItem, Button, Icon } from "react-native-elements";
 
 const Form = t.form.Form;
+
 const Search = t.struct({
-  Question: t.String
+  Keyword: t.String
 });
+
 export default class HomeScreen extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      keyword: ""
+    }
+    this.setKeyWord = this.setKeyWord.bind(this);
+  }
+
   static navigationOptions = {
     header: null
   };
+
+  setKeyWord() {
+    console.log("FORM VALUE", this._form.getValue().Keyword);
+    this.setState({keyword: "the new search term!"});
+  }
 
   render() {
     return (
@@ -37,10 +53,10 @@ export default class HomeScreen extends React.Component {
             <Form type={Search} ref={c => (this._form = c)}  />
             <Button
               title="Submit"
-              onPress={() => addPoll()}
+              onPress={this.setKeyWord}
               containerStyle={styles.optionContainer}
             />
-            <PollListSearch />
+            <PollListSearch searchQuery={this.state.keyword}/>
           </View>
         </ScrollView>
       </View>
@@ -97,6 +113,7 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   contentContainer: {
+    padding: 20,
     paddingTop: 30
   },
   welcomeContainer: {
@@ -172,8 +189,7 @@ const styles = StyleSheet.create({
     color: "#2e78b7"
   },
   container: {
-    marginTop: 50,
-    padding: 20,
+    flex: 1,
     backgroundColor: "#ffffff"
   }
 });
