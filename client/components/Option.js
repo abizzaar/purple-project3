@@ -41,14 +41,6 @@ export default class Option extends React.Component {
     }
   }
 
-  buttonTextColor() {
-    if (this.state.optionClicked) {
-      return(styles.clickedOptionNameStyle);
-    } else {
-      return(styles.optionNameStyle);
-    }
-  }
-
   render() {
     return (
       <Mutation mutation={VOTE}
@@ -92,7 +84,6 @@ const styles = StyleSheet.create({
     paddingRight: 10,
   },
   optionNameStyle: { fontWeight: "500", zIndex: 200, color: "black" },
-  clickedOptionNameStyle: { fontWeight: "500", zIndex: 200, color: "white" },
   votesStyle: { fontSize: 18, fontWeight: "400" },
   optionContainer: { marginTop: 7, marginBottom: 7 },
   optionClickEffect: {
