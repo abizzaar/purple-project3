@@ -2,39 +2,35 @@ import React from "react";
 import { StyleSheet, Platform, View, Text } from "react-native";
 import { Mutation } from "react-apollo";
 import { Card, ListItem, Button, Icon } from "react-native-elements";
-
 import t from "tcomb-form-native";
 import gql from "graphql-tag";
 
 const CREATE_POLL = gql`
-  mutation CREATE_POLL($question: String!, $description: String!) {
-    addPoll(question: $question, description: $description) {
+mutation CREATE_POLL($question: String!, $description: String!, $optionNames: [String!]!) {
+  addPoll(question: $question, description: $description) {
+    id 
+    createOption(optionNames: $optionNames) {
       id
     }
   }
-`;
-
-const CREATE_OPTION = gql
-`
-  mutation CREATE_OPTION($name: String!, $pollId: ID!) {
-    addOption(name: $name, pollId: $pollId) {
-      id
-    }
-  }
+}
 `;
 
 const Form = t.form.Form;
 
 const User = t.struct({
   Question: t.String,
+  Description: t.String,
   Option: t.list(t.String)
 });
 
 var options = {
-  //auto: "placeholders"
   fields: {
     Question: {
       label: "Enter your question"
+    },
+    Description: {
+      label: "Describe your Poll"
     },
     Option: {
       label: "Add options"
@@ -45,58 +41,29 @@ var options = {
 export default class AddPoll extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      createdPollId: false,
-      pollId: null
-    };
-    this.addedOptions = [];
-  }
-  // handleSubmit = () => {
-  //   const value = this._form.getValue(); // use that ref to get the form value
-  //   console.log("value: ", value);
-  //   this._form.refs.input.setState({ value: {} });
-  // };
-
-  runCreateOptionMutation(id) {
-    this.setState({
-      createdPollId: true,
-      pollId: id
-    });
-    console.log("running function to change state");
   }
 
   render() {
-    const createOptionMutation = (
-      <Mutation
-        mutation={CREATE_OPTION}
-        variables={{ name: "just wanna pass this", pollId: this.state.pollId }}
-      >
-        {(addOption, { data }) => {
-          console.log("reached option mutation");
-          return <MyComponentToCallOption addOption={addOption} />;
-        }}
-      </Mutation>
-    );
-
     const createPollMutation = (
       <Mutation
         mutation={CREATE_POLL}
-        onCompleted={data => this.runCreateOptionMutation(data.addPoll.id)}
       >
-        {// mutation needs function as child
-        // vote is the mutation func that needs to be passed as first input
-        (addPoll, { data }) => (
+        {(addPoll, { data }) => (
           <View style={styles.container}>
             <Form type={User} ref={c => (this._form = c)} options={options} />
             <Button
               title="Submit"
-              onPress={() =>
+              onPress={() => {
+                console.log(this._form.getValue().Option.values())
                 addPoll({
                   variables: {
                     question: this._form.getValue().Question,
-                    description: "Nothing in particular"
+                    description: this._form.getValue().Description,
+                    optionNames: this._form.getValue().Option.values()
                   }
                 })
+              }
+                
               }
               containerStyle={styles.optionContainer}
             />
@@ -105,29 +72,8 @@ export default class AddPoll extends React.Component {
       </Mutation>
     );
 
-    return this.state.createdPollId
-      ? [createPollMutation, createOptionMutation]
-      : createPollMutation;
+    return createPollMutation;
 
-    return (
-      <View style={styles.container}>
-        <Form type={User} ref={c => (this._form = c)} />
-        <Button title="Submit" onPress={this.handleSubmit} />
-      </View>
-    );
-  }
-}
-
-class MyComponentToCallOption extends React.Component {
-  constructor() {
-    super();
-  }
-  componentDidMount() {
-    console.log("reached my component");
-    this.props.addOption();
-  }
-  render() {
-    return null;
   }
 }
 
