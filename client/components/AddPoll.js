@@ -26,8 +26,20 @@ const Form = t.form.Form;
 
 const User = t.struct({
   Question: t.String,
-  Options: t.list(t.String)
+  Option: t.list(t.String)
 });
+
+var options = {
+  //auto: "placeholders"
+  fields: {
+    Question: {
+      label: "Enter your question"
+    },
+    Option: {
+      label: "Add options"
+    }
+  }
+};
 
 export default class AddPoll extends React.Component {
   constructor(props) {
@@ -78,7 +90,7 @@ export default class AddPoll extends React.Component {
         // vote is the mutation func that needs to be passed as first input
         (addPoll, { data }) => (
           <View style={styles.container}>
-            <Form type={User} ref={c => (this._form = c)} />
+            <Form type={User} ref={c => (this._form = c)} options={options} />
             <Button
               title="Submit"
               onPress={() => addPoll()}
