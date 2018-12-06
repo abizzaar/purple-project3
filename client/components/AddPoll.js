@@ -19,6 +19,20 @@ const CREATE_POLL = gql
     }
   }
 `;
+
+
+
+const CREATE_OPTION = gql
+`
+  mutation CREATE_OPTION($name: String!, $pollId: ID!) {
+    addOption(name: $name, pollId: $pollId) {
+      id
+    }
+  }
+
+`;
+
+
 const Form = t.form.Form;
 
 const User = t.struct({
@@ -32,7 +46,12 @@ const User = t.struct({
 export default class AddPoll extends React.Component {
     constructor(props) {
     super(props);
-    this.state={};
+    this.state={
+      createdPollId: false,
+      pollId: null,
+      
+    };
+    this.addedOptions = []
   }
   // handleSubmit = () => {
   //   const value = this._form.getValue(); // use that ref to get the form value
@@ -40,21 +59,46 @@ export default class AddPoll extends React.Component {
   //   this._form.refs.input.setState({ value: {} });
   // };
 
-  state = {};
+  runCreateOptionMutation(id) {
+    this.setState({
+      createdPollId: true,
+      pollId: id,
+    })
+    console.log("running function to change state")
+  }
+
   render() {
-        return (
-        <Mutation mutation={CREATE_POLL}
-                variables={{ question: "This is still not working?", description:"Nothing in particular"}}>{
+        const createOptionMutation =
+          <Mutation mutation={CREATE_OPTION} 
+            variables={{name: "just wanna pass this", pollId: this.state.pollId}}>
+            {
+              (addOption, { data }) => {
+                console.log("reached option mutation");
+                return <MyComponentToCallOption addOption={addOption}/>
+              }
+            }
+          </Mutation>
+
+       
+        
+        const createPollMutation = <Mutation mutation={CREATE_POLL}
+                variables={{ question: "wthat's up?", description:"Nothing in particular"}}
+                onCompleted={(data) => this.runCreateOptionMutation(data.addPoll.id)}>{
           // mutation needs function as child 
           // vote is the mutation func that needs to be passed as first input
           (addPoll, { data }) => 
             <View style={styles.container}>
             <Form type={User} ref={c => (this._form = c)} />
-            <Button title="Submit" onPress={() => {addPoll()}} containerStyle={styles.optionContainer}/>
+            <Button title="Submit" onPress={() => addPoll()} containerStyle={styles.optionContainer}/>
             </View>
-     
-      }</Mutation>
-    )
+            
+
+        }</Mutation>
+
+
+        return (this.state.createdPollId ? [createPollMutation, createOptionMutation] : createPollMutation);
+
+
     return (
       <View style={styles.container}>
         <Form type={User} ref={c => (this._form = c)} />
@@ -63,6 +107,20 @@ export default class AddPoll extends React.Component {
     );
   }
 }
+
+class MyComponentToCallOption extends React.Component {
+  constructor() {
+    super();
+  }
+  componentDidMount() {
+    console.log("reached my component")
+    this.props.addOption()
+  }
+  render() {
+    return null
+  }
+}
+
 
 const styles = StyleSheet.create({
   container: {
