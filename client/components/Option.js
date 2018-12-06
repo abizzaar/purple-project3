@@ -59,10 +59,10 @@ export default class Option extends React.Component {
             <View style={{flex: 1}}>
               <Button
                 title={this.props.option.name}
-                titleStyle={this.buttonTextColor()}
+                titleStyle={styles.optionNameStyle}
                 buttonStyle={styles.optionStyle}
                 icon={<Text style={styles.votesStyle}>
-                        { this.props.pollClicked && this.state.optionClicked ? this.props.option.votes : "" }
+                        { this.props.pollClicked ? this.props.option.votes : "" }
                       </Text>}
                 iconRight
                 onPress={() => {vote(); this.optionPressed()}}
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
     height: 45
   },
   specificOptionClickEffect: {
-    backgroundColor: '#003366',
+    backgroundColor: '#ffe605',
     zIndex: -1,
     borderRadius: 5,
     position: 'absolute',
