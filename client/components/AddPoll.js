@@ -80,10 +80,6 @@ export default class AddPoll extends React.Component {
     const createPollMutation = (
       <Mutation
         mutation={CREATE_POLL}
-        variables={{
-          question: "wthat's up?",
-          description: "Nothing in particular"
-        }}
         onCompleted={data => this.runCreateOptionMutation(data.addPoll.id)}
       >
         {// mutation needs function as child
@@ -93,7 +89,14 @@ export default class AddPoll extends React.Component {
             <Form type={User} ref={c => (this._form = c)} options={options} />
             <Button
               title="Submit"
-              onPress={() => addPoll()}
+              onPress={() =>
+                addPoll({
+                  variables: {
+                    question: this._form.getValue().Question,
+                    description: "Nothing in particular"
+                  }
+                })
+              }
               containerStyle={styles.optionContainer}
             />
           </View>
