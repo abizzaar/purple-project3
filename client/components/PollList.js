@@ -13,6 +13,7 @@ const GET_ALL_POLLS = gql`
   polls {
     question
     id
+    description
     options {
       name
       id
@@ -26,12 +27,12 @@ export default class PollList extends React.Component {
   render() {
     return (
       <Query query={ GET_ALL_POLLS }>{
-        ({ loading, error, data }) => { 
+        ({ loading, error, data }) => {
           if (loading) return <View></View>;
           if (error) return <View></View>;
           console.log(data.polls);
           return data.polls.map(poll => <Poll key={poll.id} poll={poll}/>)
-          
+
         }
       }</Query>
     )

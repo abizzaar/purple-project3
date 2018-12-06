@@ -1,9 +1,10 @@
 import React from "react";
 import { ScrollView, StyleSheet, Text } from "react-native";
+import AddPoll from "../components/AddPoll.js";
 
 export default class LinksScreen extends React.Component {
   static navigationOptions = {
-    title: "Categories"
+    title: "Submit your poll"
   };
 
   render() {
@@ -11,7 +12,7 @@ export default class LinksScreen extends React.Component {
       <ScrollView style={styles.container}>
         {/* Go ahead and delete ExpoLinksView and replace it with your
          * content, we just wanted to provide you with some helpful links */}
-        <Text style={styles.getStartedText}>Categories!</Text>
+        <AddPoll />
       </ScrollView>
     );
   }

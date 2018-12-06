@@ -15,7 +15,8 @@ export default class Poll extends React.Component {
   render() {
     return (
       <View>
-        <Card 
+        <Text>{(this.props.poll.description == null)? "": this.props.poll.description }</Text>
+        <Card
           title={this.props.poll.question}
           containerStyle={{
             borderRadius: 5,
@@ -29,9 +30,9 @@ export default class Poll extends React.Component {
         >
         {this.props.poll.options.map((option)=> {
           return (
-            <Option 
-              pollClicked={this.state.pollClicked} 
-              key={option.id} 
+            <Option
+              pollClicked={this.state.pollClicked}
+              key={option.id}
               option={option}
               press={() => {
                 this.setState(
