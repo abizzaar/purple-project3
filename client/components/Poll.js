@@ -35,11 +35,6 @@ export default class Poll extends React.Component {
   render() {
     return (
       <View>
-        <Text>
-          {this.props.poll.description == null
-            ? ""
-            : this.props.poll.description}
-        </Text>
         <Card
           title={this.props.poll.question}
           containerStyle={{
@@ -50,6 +45,11 @@ export default class Poll extends React.Component {
             paddingLeft: 10
           }}
         >
+        <Text>
+          {this.props.poll.description == null
+            ? ""
+            : this.props.poll.description}
+        </Text>
           {this.props.poll.options.map(option => {
             return (
               <Option
