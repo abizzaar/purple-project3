@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { Card, ListItem, Button, Icon } from "react-native-elements";
 import Option from "./Option.js";
 
@@ -45,7 +45,7 @@ export default class Poll extends React.Component {
             paddingLeft: 10
           }}
         >
-        <Text>
+        <Text style={styles.whiteSpaceBottom}>
           {this.props.poll.description == null
             ? ""
             : this.props.poll.description}
@@ -69,3 +69,9 @@ export default class Poll extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  whiteSpaceBottom: {
+    paddingBottom: 5
+  }
+});
