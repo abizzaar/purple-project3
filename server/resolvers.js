@@ -31,7 +31,7 @@ const resolvers = {
     listPolls: async(_, { desc }) =>  {
     //  var q='/'+desc+'/i';
     //  console.log(q);
-      let poll = await Poll.find({ description: desc});
+      let poll = await Poll.find({ question: desc});
       console.log(poll);
       return poll;
     },
