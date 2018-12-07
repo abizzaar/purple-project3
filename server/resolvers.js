@@ -6,7 +6,7 @@ const resolvers = {
     options: (parent) => parent.optionIds.map((id) => Option.findById(id)),
     createOption: async (parent, {optionNames}) => {
       let returnList = []
-      for (let o in optionNames) {
+      for (let o of optionNames) {
         const option = new Option({
           name: o,
           votes: 0
@@ -31,7 +31,7 @@ const resolvers = {
     listPolls: async(_, { desc }) =>  {
     //  var q='/'+desc+'/i';
     //  console.log(q);
-      let poll = await Poll.find({ description: desc});
+      let poll = await Poll.find({ question: desc});
       console.log(poll);
       return poll;
     },
