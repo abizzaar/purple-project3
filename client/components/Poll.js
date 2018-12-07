@@ -3,18 +3,6 @@ import { View, Text, StyleSheet } from "react-native";
 import { Card, ListItem, Button, Icon } from "react-native-elements";
 import Option from "./Option.js";
 
-import t from "tcomb-form-native";
-
-const Form = t.form.Form;
-
-const User = t.struct({
-  Option: t.list(t.String)
-});
-
-var options = {
-  auto: "placeholders"
-};
-
 export default class Poll extends React.Component {
   constructor(props) {
     super(props);
@@ -45,11 +33,11 @@ export default class Poll extends React.Component {
             paddingLeft: 10
           }}
         >
-        <Text style={styles.whiteSpaceBottom}>
-          {this.props.poll.description == null
-            ? ""
-            : this.props.poll.description}
-        </Text>
+          <Text style={styles.whiteSpaceBottom}>
+            {this.props.poll.description == null
+              ? ""
+              : this.props.poll.description}
+          </Text>
           {this.props.poll.options.map(option => {
             return (
               <Option
@@ -63,7 +51,6 @@ export default class Poll extends React.Component {
               />
             );
           })}
-          <Form type={User} ref={c => (this._form = c)} options={options} />
         </Card>
       </View>
     );
