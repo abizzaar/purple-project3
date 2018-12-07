@@ -59,7 +59,7 @@ export default class AddPoll extends React.Component {
                   variables: {
                     question: this._form.getValue().Question,
                     description: this._form.getValue().Description,
-                    optionNames: this._form.getValue().Option.values()
+                    optionNames: this._form.getValue().Option.map(x => x[Object.keys(x)[0]])
                   }
                 })
               }
