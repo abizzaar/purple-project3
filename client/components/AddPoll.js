@@ -54,12 +54,12 @@ export default class AddPoll extends React.Component {
             <Button
               title="Submit"
               onPress={() => {
-                console.log(this._form.getValue().Option.values())
+                console.log(this._form.getValue().Option)
                 addPoll({
                   variables: {
                     question: this._form.getValue().Question,
                     description: this._form.getValue().Description,
-                    optionNames: this._form.getValue().Option.map(x => x[Object.keys(x)[0]])
+                    optionNames: this._form.getValue().Option
                   }
                 })
               }
