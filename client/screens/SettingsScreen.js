@@ -30,7 +30,7 @@ export default class HomeScreen extends React.Component {
 
   setKeyWord() {
     console.log("FORM VALUE", this._form.getValue().Keyword);
-    this.setState({keyword: "the new search term!"});
+    this.setState({keyword: this._form.getValue().Keyword});
   }
 
   render() {

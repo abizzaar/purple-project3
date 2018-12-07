@@ -16,6 +16,7 @@ const typeDefs =
     polls: [Poll!]!
     poll(pollId: ID!): Poll
     option(optionId: ID!): Option
+    listPolls(desc: String!): [Poll!]!
   }
 
   type Mutation {

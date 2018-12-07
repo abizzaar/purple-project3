@@ -10,23 +10,20 @@ import { Query } from 'react-apollo'
 
 
 const SEARCH_ALL_POLLS = gql`
-  query($searchQuery: String) {
-    listPolls(filter: {
-      description: {
-        contains: $searchQuery
-      }
-    }) {
-      polls {
-        question
-        id
-        description
-        options {
-          name
-          id
-          votes
-        }
-      }
+  query SEARCH_ALL_POLLS($searchQuery: String!) {
+    listPolls(desc: $searchQuery) {
+
+    question
+    id
+    description
+    options {
+      name
+      id
+      votes
     }
+  
+    }
+  
   }
 ` 
 export default class PollListSearch extends React.Component {
@@ -41,7 +38,10 @@ export default class PollListSearch extends React.Component {
           if (loading) return <View></View>;
           if (error) return <View></View>;
           console.log("Reached");
-          return data.polls.map(poll => <Poll key={poll.id} poll={poll}/>)
+          if(data.listPolls.length!=0){
+            return data.listPolls.map(poll => <Poll key={poll.id} poll={poll}/>)
+          }
+          return null;
 
         }
       }
