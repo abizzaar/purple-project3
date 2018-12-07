@@ -59,9 +59,9 @@ export default class AddPoll extends React.Component {
                 console.log(this._form.getValue().Option);
                 addPoll({
                   variables: {
-                    question: this._form.getValue().Question,
-                    description: this._form.getValue().Description,
-                    optionNames: this._form.getValue().Option
+                    question: this._form.getValue().Question ? this._form.getValue().Question : "",
+                    description: this._form.getValue().Description ? this._form.getValue().Description: "",
+                    optionNames: this._form.getValue().Option ? this._form.getValue().Option : []
                   }
                 });
               }}

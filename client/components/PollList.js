@@ -24,9 +24,17 @@ const GET_ALL_POLLS = gql`
 `
 
 export default class PollList extends React.Component {
+  constructor(props) {
+    super(props)
+    
+  }
+  componentDidMount() {
+    window.setInterval(() => this.setState({twoSecondPollInterval: true}), 2000)
+  }
+  
   render() {
     return (
-      <Query query={ GET_ALL_POLLS }>{
+      <Query query={ GET_ALL_POLLS } pollInterval={500}>{
         ({ loading, error, data }) => {
           if (loading) return <View></View>;
           if (error) return <View></View>;
