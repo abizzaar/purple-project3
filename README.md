@@ -2,6 +2,8 @@
 
 Pollen is a place where people share their voices and opinions with polls. Collecting valuable datasets on human preferences, this app has the power to train machine learning models, better inform about society, and predict trends in human behavior.
 
+![Pollen app design](Pollen.jpg)
+
 Create a poll and gather opinions! <br />
 
 Ask questions like:
